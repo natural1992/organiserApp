@@ -1,0 +1,10 @@
+package pl.wojciechbury.organiser.models.repositories;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+import pl.wojciechbury.organiser.models.entities.UserEntity;
+
+@Repository
+public interface UserRepository extends CrudRepository<UserEntity, Integer> {
+    boolean existsByLogin(String login);
+}
