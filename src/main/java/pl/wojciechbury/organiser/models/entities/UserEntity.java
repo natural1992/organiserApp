@@ -1,6 +1,7 @@
 package pl.wojciechbury.organiser.models.entities;
 
 import lombok.Data;
+import pl.wojciechbury.organiser.models.forms.RegisterForm;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,4 +17,11 @@ public class UserEntity {
     @GeneratedValue
     @Id
     private int id;
+
+    public UserEntity(RegisterForm registerForm){
+        login = registerForm.getLogin();
+        password = registerForm.getPassword();
+        city = registerForm.getCity();
+        postalCode = registerForm.getPostalCode();
+    }
 }
