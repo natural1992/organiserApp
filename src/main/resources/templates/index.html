@@ -66,8 +66,8 @@ body{
 
 .login{
 	position: absolute;
-	top: calc(50% - 300px);
-	left: calc(50% - 50px);
+	top: calc(50% - 150px);
+	left: calc(50% - 450px);
 	height: 150px;
 	width: 350px;
 	padding: 10px;
@@ -139,8 +139,9 @@ position: absolute;
 	padding: 6px;
 	margin-top: 10px;
 }
-.note input[type=submit]{
-	width: 260px;
+
+.login button[type=button] {
+width: 150px;
 	height: 35px;
 	background: #fff;
 	border: 1px solid #fff;
@@ -153,7 +154,8 @@ position: absolute;
 	padding: 6px;
 	margin-top: 10px;
 }
-.note button[type=submit] {
+
+.note button[type=button] {
 width: 150px;
 	height: 35px;
 	background: #fff;
@@ -173,7 +175,15 @@ width: 150px;
 	opacity: 0.8;
 }
 
+.note button[type=button]:hover{
+	opacity: 0.8;
+}
+
 .login input[type=submit]:active{
+	opacity: 0.6;
+}
+
+.note button[type=button]:active{
 	opacity: 0.6;
 }
 
@@ -191,6 +201,10 @@ width: 150px;
 	outline: none;
 }
 
+.note button[type=button]:focus{
+	outline: none;
+}
+
 ::-webkit-input-placeholder{
    color: rgba(255,255,255,0.6);
 }
@@ -198,6 +212,7 @@ width: 150px;
 ::-moz-input-placeholder{
    color: rgba(255,255,255,0.6);
 }
+
 </style>
 <body>
 <div class="body"></div>
@@ -205,9 +220,8 @@ width: 150px;
 <div class="header">
     <div>Welcome <span th:text="${login}"></span></div>
 </div>
-    <div class="note"><form method="get" action="/newnote">
-        <button type="submit">Create new note</button>
-    </form>
+    <div class="login">
+        <button onclick="location.href='/newnote'" type="button">Create new note</button>
     </div>
 </body>
 </html>

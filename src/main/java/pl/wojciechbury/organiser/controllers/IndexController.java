@@ -35,15 +35,28 @@ public class IndexController {
         return "index";
     }
 
-    @PostMapping("/")
-    public String getMainScreen(Model model, @ModelAttribute @Valid NoteForm noteForm, BindingResult bindingResult){
-        if(bindingResult.hasErrors()){
-            model.addAttribute("addingInfo", "date or priority is incorrect");
+//    @PostMapping("/")
+//    public String getMainScreen(Model model, @ModelAttribute @Valid NoteForm noteForm, BindingResult bindingResult){
+//
+//    }
 
-            return "index";
+    @GetMapping("/newnote")
+    public String showNewNote(Model model){
+        if(!userSession.isLoggedIn()){
+            return "redirect:/user/login";
+        }
+        model.addAttribute("noteForm", new NoteForm());
+
+        return "createNote";
+    }
+
+    @PostMapping("/newnote")
+    public String getNewNote(Model model, @ModelAttribute NoteForm noteForm, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            model.addAttribute("noteInfo", "date or priority is incorrect");
         }
         noteService.addNote(noteForm);
 
-        return "index";
+        return "redirect:/";
     }
 }

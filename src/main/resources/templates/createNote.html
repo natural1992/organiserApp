@@ -171,7 +171,7 @@ body{
     <div>New<span>Note</span></div>
 </div>
 <div class="login">
-    <form action="/" method="post" th:object="${noteForm}">
+    <form action="/newnote" method="post" th:object="${noteForm}">
         <input type="text" th:field="*{title}" placeholder="Title">
         <div class ="text"><input type="text" style="display:inline" th:field="*{noteText}" placeholder="Text"></div>
         <input type="text" th:field="*{priority}" style="display:inline" placeholder="Priority 0-9">
