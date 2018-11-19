@@ -2,10 +2,10 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title>Create Note</title>
 </head>
 <style>
-     @import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
+        @import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
 
 body{
@@ -47,8 +47,8 @@ body{
 
 .header{
 	position: absolute;
-	top: calc(50% - 220px);
-	left: calc(50% - 500px);
+	top: calc(50% - 80px);
+	left: calc(50% - 250px);
 	z-index: 2;
 }
 
@@ -56,7 +56,7 @@ body{
 	float: left;
 	color: #fff;
 	font-family: 'Exo', sans-serif;
-	font-size: 50px;
+	font-size: 40px;
 	font-weight: 250;
 }
 
@@ -66,14 +66,14 @@ body{
 
 .login{
 	position: absolute;
-	top: calc(50% - 300px);
+	top: calc(50% - 150px);
 	left: calc(50% - 50px);
 	height: 150px;
 	width: 350px;
 	padding: 10px;
 	z-index: 2;
 	font-family: 'Exo', sans-serif;
-	font-size: 15px;
+	font-size: 5px;
 }
 
 
@@ -118,12 +118,6 @@ body{
 	padding: 4px;
 	margin-top: 10px;
 }
-.note {
-position: absolute;
-	top: calc(50% - 150px);
-	left: calc(50% - 450px);
-
-}
 
 .login input[type=submit]{
 	width: 260px;
@@ -139,35 +133,6 @@ position: absolute;
 	padding: 6px;
 	margin-top: 10px;
 }
-.note input[type=submit]{
-	width: 260px;
-	height: 35px;
-	background: #fff;
-	border: 1px solid #fff;
-	cursor: pointer;
-	border-radius: 2px;
-	color: #a18d6c;
-	font-family: 'Exo', sans-serif;
-	font-size: 16px;
-	font-weight: 400;
-	padding: 6px;
-	margin-top: 10px;
-}
-.note button[type=submit] {
-width: 150px;
-	height: 35px;
-	background: #fff;
-	border: 1px solid #fff;
-	cursor: pointer;
-	border-radius: 2px;
-	color: #a18d6c;
-	font-family: 'Exo', sans-serif;
-	font-size: 16px;
-	font-weight: 400;
-	padding: 6px;
-	margin-top: 10px;
-}
-
 
 .login input[type=submit]:hover{
 	opacity: 0.8;
@@ -203,11 +168,17 @@ width: 150px;
 <div class="body"></div>
 <div class="grad"></div>
 <div class="header">
-    <div>Welcome <span th:text="${login}"></span></div>
+    <div>New<span>Note</span></div>
 </div>
-    <div class="note"><form method="get" action="/newnote">
-        <button type="submit">Create new note</button>
+<div class="login">
+    <form action="/" method="post" th:object="${noteForm}">
+        <input type="text" th:field="*{title}" placeholder="Title">
+        <div class ="text"><input type="text" style="display:inline" th:field="*{noteText}" placeholder="Text"></div>
+        <input type="text" th:field="*{priority}" style="display:inline" placeholder="Priority 0-9">
+        <input type="text" th:field="*{noteDate}" placeholder="Date yyyy-MM-dd">
+        <input type="submit" value="Create">
     </form>
-    </div>
+</div>
+
 </body>
 </html>
