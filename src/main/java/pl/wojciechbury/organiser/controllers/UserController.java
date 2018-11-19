@@ -69,9 +69,9 @@ public class UserController {
 
             return "userRegistration";
         }
-        userService.addUser(registerForm);
-
         UserForm newUser = new UserForm(registerForm.getLogin(), registerForm.getPassword());
+
+        userService.addUser(registerForm);
 
         userService.tryLogin(newUser);
 

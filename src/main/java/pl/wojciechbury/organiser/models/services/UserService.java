@@ -39,6 +39,7 @@ public class UserService {
     }
 
     public void addUser(RegisterForm registerForm) {
+        registerForm.setPassword(passwordHashingService.hash(registerForm.getPassword()));
         UserEntity newUser = new UserEntity(registerForm);
         userRepository.save(newUser);
     }
