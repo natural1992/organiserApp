@@ -9,6 +9,8 @@ import pl.wojciechbury.organiser.models.repositories.NoteRepository;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class NoteService {
@@ -30,5 +32,14 @@ public class NoteService {
     public void addNote(NoteForm noteForm) {
         NoteEntity newNote = new NoteEntity(noteForm, userSession, convertStringToLocalDate(noteForm.getNoteDate()));
         noteRepository.save(newNote);
+    }
+
+    public List<NoteEntity> getListOfNotesForToday(){
+        List<NoteEntity> notesList = noteRepository.noteListForToday(
+                userSession.getUserEntity().getLogin(), LocalDate.now()).stream()
+                .sorted((s, s1) -> Integer.compare(s1.getPriority(), s.getPriority()))
+                .collect(Collectors.toList());
+
+        return notesList;
     }
 }

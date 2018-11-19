@@ -76,6 +76,21 @@ body{
 	font-size: 15px;
 }
 
+.noteOne{
+	position: absolute;
+	top: calc(50% - 150px);
+	right: calc(50% - 300px);
+	height: 150px;
+	width: 500px;
+	padding: 10px;
+	z-index: 2;
+	font-family: 'Exo', sans-serif;
+	font-size: 15px;
+}
+
+.noteOne text{
+    width: 200px
+}
 
 .login input[type=text]{
 	width: 400px;
@@ -118,12 +133,6 @@ body{
 	padding: 4px;
 	margin-top: 10px;
 }
-.note {
-position: absolute;
-	top: calc(50% - 150px);
-	left: calc(50% - 450px);
-
-}
 
 .login input[type=submit]{
 	width: 260px;
@@ -155,22 +164,6 @@ width: 150px;
 	margin-top: 10px;
 }
 
-.note button[type=button] {
-width: 150px;
-	height: 35px;
-	background: #fff;
-	border: 1px solid #fff;
-	cursor: pointer;
-	border-radius: 2px;
-	color: #a18d6c;
-	font-family: 'Exo', sans-serif;
-	font-size: 16px;
-	font-weight: 400;
-	padding: 6px;
-	margin-top: 10px;
-}
-
-
 .login input[type=submit]:hover{
 	opacity: 0.8;
 }
@@ -180,10 +173,6 @@ width: 150px;
 }
 
 .login input[type=submit]:active{
-	opacity: 0.6;
-}
-
-.note button[type=button]:active{
 	opacity: 0.6;
 }
 
@@ -201,10 +190,6 @@ width: 150px;
 	outline: none;
 }
 
-.note button[type=button]:focus{
-	outline: none;
-}
-
 ::-webkit-input-placeholder{
    color: rgba(255,255,255,0.6);
 }
@@ -215,13 +200,21 @@ width: 150px;
 
 </style>
 <body>
-<div class="body"></div>
-<div class="grad"></div>
-<div class="header">
-    <div>Welcome <span th:text="${login}"></span></div>
-</div>
+    <div class="body"></div>
+    <div class="grad"></div>
+    <div class="header">
+        <div>Welcome <span th:text="${login}"></span></div>
+    </div>
     <div class="login">
-        <button onclick="location.href='/newnote'" type="button">Create new note</button>
+            <button onclick="location.href='/newnote'" type="button">Create new note</button>
+    </div>
+    <div class="noteOne">
+        <ul>
+            <li th:each="note : ${notes}">
+                <strong th:text="${note.getPriority() + '   ' + note.getTitle()}"></strong><br/>
+                <span th:text="${note.getText()}" ></span>
+            </li>
+        </ul>
     </div>
 </body>
 </html>

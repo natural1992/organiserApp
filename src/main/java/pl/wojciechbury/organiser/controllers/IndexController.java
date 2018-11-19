@@ -11,8 +11,6 @@ import pl.wojciechbury.organiser.models.UserSession;
 import pl.wojciechbury.organiser.models.forms.NoteForm;
 import pl.wojciechbury.organiser.models.services.NoteService;
 
-import javax.validation.Valid;
-
 @Controller
 public class IndexController {
 
@@ -31,6 +29,7 @@ public class IndexController {
             return "redirect:/user/login";
         }
         model.addAttribute("login", userSession.getUserEntity().getLogin());
+        model.addAttribute("notes", noteService.getListOfNotesForToday());
 
         return "index";
     }
