@@ -41,6 +41,7 @@ public class IndexController {
         model.addAttribute("weather", (int) weather.getTempDto().getTemperature() - 273);
         model.addAttribute("clouds", (int) weather.getCloudsDto().getClouds());
         model.addAttribute("date", LocalDate.now());
+        model.addAttribute("city", userSession.getUserEntity().getCity());
 
         return "index";
     }

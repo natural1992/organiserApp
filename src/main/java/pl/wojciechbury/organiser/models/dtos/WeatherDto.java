@@ -1,10 +1,7 @@
 package pl.wojciechbury.organiser.models.dtos;
 
-import lombok.Data;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.stereotype.Component;
 import com.google.gson.annotations.SerializedName;
+import lombok.Data;
 
 @Data
 public class WeatherDto {

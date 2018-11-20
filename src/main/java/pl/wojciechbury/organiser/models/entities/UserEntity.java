@@ -1,5 +1,6 @@
 package pl.wojciechbury.organiser.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import pl.wojciechbury.organiser.models.forms.RegisterForm;
@@ -14,7 +15,11 @@ import javax.persistence.Table;
 @Table(name = "user")
 @NoArgsConstructor
 public class UserEntity {
-    private String login, password, city, postalCode;
+
+    private String login, city, postalCode;
+
+    @JsonIgnore
+    private String  password;
 
     @GeneratedValue
     @Id

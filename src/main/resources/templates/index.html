@@ -202,7 +202,8 @@ width: 150px;
         <div>Welcome <span th:text="${login}"></span></div>
     </div>
     <div class="header" style="top: 40%; left: 18%">
-        <div th:text="${weather + '°C'}"></div><br/>
+        <div th:text="${city}"></div><br/>
+        <div style="color: #5379fa" th:text="${'    ' + weather + '°C'}"></div><br/>
         <div style="font-size: 20px;" th:text="${'cloud level: ' + clouds + '%'}"></div><br/>
         <div style="font-size: 20px;" th:text="${date}"></div>
     </div>
