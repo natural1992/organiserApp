@@ -24,10 +24,10 @@ public class WeatherService {
         this.gson = gson;
     }
 
-    public WeatherDto loadWeatherFor(final String postalCode){
+    public WeatherDto loadWeatherFor(final String cityName){
 
-        WeatherDto weatherDto = convertJsonToCurrentWeather(readWebsite("https://api.openweathermap.org/data/2.5/weather?zip="
-                + postalCode
+        WeatherDto weatherDto = convertJsonToCurrentWeather(readWebsite("https://api.openweathermap.org/data/2.5/weather?q="
+                + cityName
                 + "&appid="
                 + Config.API_KEY));
 

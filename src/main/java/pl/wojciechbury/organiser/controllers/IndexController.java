@@ -34,7 +34,7 @@ public class IndexController {
         if(!userSession.isLoggedIn()){
             return "redirect:/user/login";
         }
-        WeatherDto weather = weatherService.loadWeatherFor(userSession.getUserEntity().getPostalCode());
+        WeatherDto weather = weatherService.loadWeatherFor(userSession.getUserEntity().getCity());
 
         model.addAttribute("login", userSession.getUserEntity().getLogin());
         model.addAttribute("notes", noteService.getListOfNotesForToday());
