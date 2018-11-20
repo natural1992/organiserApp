@@ -36,6 +36,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
                 return false;
             }
         }
+
+        response.sendRedirect("/user/login");
         return super.preHandle(request, response, handler);
     }
 }

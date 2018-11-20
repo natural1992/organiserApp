@@ -31,9 +31,6 @@ public class IndexController {
 
     @GetMapping("/")
     public String showMainScreen(Model model){
-        if(!userSession.isLoggedIn()){
-            return "redirect:/user/login";
-        }
         WeatherDto weather = weatherService.loadWeatherFor(userSession.getUserEntity().getCity());
 
         model.addAttribute("login", userSession.getUserEntity().getLogin());
@@ -48,9 +45,6 @@ public class IndexController {
 
     @GetMapping("/newnote")
     public String showNewNote(Model model){
-        if(!userSession.isLoggedIn()){
-            return "redirect:/user/login";
-        }
         model.addAttribute("noteForm", new NoteForm());
 
         return "createNote";
