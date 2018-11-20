@@ -26,7 +26,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         if(request.getRequestURI().contains("register") || request.getRequestURI().contains("login") || userSession.isLoggedIn()){
-            return true;
+            return super.preHandle(request, response, handler);
         }
         if(request.getRequestURI().contains("api")){
             String passwordApi = request.getHeader(PASSWORD_HEADER_API);
