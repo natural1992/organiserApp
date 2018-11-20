@@ -2,20 +2,20 @@ package pl.wojciechbury.organiser.models.services;
 
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import pl.wojciechbury.organiser.models.Config;
-import pl.wojciechbury.organiser.models.WeatherDto;
+import pl.wojciechbury.organiser.models.dtos.WeatherDto;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
 
 @Service
 public class WeatherService {
+
+    @Value("${api.key")
+    String API_KEY;
 
     final private Gson gson;
 
@@ -29,7 +29,7 @@ public class WeatherService {
         WeatherDto weatherDto = convertJsonToCurrentWeather(readWebsite("https://api.openweathermap.org/data/2.5/weather?q="
                 + cityName
                 + "&appid="
-                + Config.API_KEY));
+                + API_KEY));
 
         return weatherDto;
     }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.wojciechbury.organiser.models.UserSession;
-import pl.wojciechbury.organiser.models.WeatherDto;
+import pl.wojciechbury.organiser.models.dtos.WeatherDto;
 import pl.wojciechbury.organiser.models.forms.NoteForm;
 import pl.wojciechbury.organiser.models.services.NoteService;
 import pl.wojciechbury.organiser.models.services.WeatherService;

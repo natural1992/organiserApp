@@ -33,14 +33,10 @@ public class UserController {
 
     @PostMapping("/user/login")
     public String getLoginForm(Model model, @ModelAttribute UserForm userForm){
-        if(!userService.isSuchLogin(userForm.getLogin())){
-            model.addAttribute("loginInfo", "Wrong login");
-        }
-        userService.tryLogin(userForm);
-
-        if(userSession.isLoggedIn()){
+        if(userService.tryLogin(userForm)){
             return "redirect:/";
         }
+        model.addAttribute("loginInfo", "Login or password is incorrect");
 
         return "userLogin";
     }

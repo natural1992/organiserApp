@@ -1,4 +1,4 @@
-package pl.wojciechbury.organiser.models;
+package pl.wojciechbury.organiser.models.dtos;
 
 import lombok.Data;
 import org.springframework.context.annotation.Scope;
@@ -6,9 +6,7 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import com.google.gson.annotations.SerializedName;
 
-@Component
 @Data
-@Scope(scopeName = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class WeatherDto {
 
     @SerializedName("main")

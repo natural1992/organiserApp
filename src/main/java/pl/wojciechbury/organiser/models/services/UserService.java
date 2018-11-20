@@ -9,6 +9,7 @@ import pl.wojciechbury.organiser.models.forms.UserForm;
 import pl.wojciechbury.organiser.models.repositories.UserRepository;
 
 import javax.jws.soap.SOAPBinding;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -29,13 +30,21 @@ public class UserService {
         return userRepository.existsByLogin(login);
     }
 
-    public void tryLogin(UserForm userForm) {
-        UserEntity loginUser = userRepository.getUserByLogin(userForm.getLogin()).get();
+    public boolean tryLogin(UserForm userForm) {
+        Optional<UserEntity> loginUser = userRepository.getUserByLogin(userForm.getLogin());
 
-        if(passwordHashingService.match(loginUser.getPassword(), userForm.getPassword()));{
-            userSession.setLoggedIn(true);
-            userSession.setUserEntity(loginUser);
+        if(!loginUser.isPresent()){
+            return false;
         }
+
+        if(passwordHashingService.match(loginUser.get().getPassword(), userForm.getPassword())){
+            userSession.setLoggedIn(true);
+            userSession.setUserEntity(loginUser.get());
+
+            return true;
+        }
+
+        return false;
     }
 
     public void addUser(RegisterForm registerForm) {
