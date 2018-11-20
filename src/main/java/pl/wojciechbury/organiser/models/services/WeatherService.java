@@ -14,7 +14,7 @@ import java.net.URL;
 @Service
 public class WeatherService {
 
-    @Value("${api.key")
+    @Value("${api.key}")
     String API_KEY;
 
     final private Gson gson;
