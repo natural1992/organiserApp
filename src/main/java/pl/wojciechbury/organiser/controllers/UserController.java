@@ -28,7 +28,7 @@ public class UserController {
     public String showLoginForm(Model model){
         model.addAttribute("userForm", new UserForm());
 
-        return "userLogin";
+        return "user/userLogin";
     }
 
     @PostMapping("/user/login")
@@ -38,14 +38,14 @@ public class UserController {
         }
         model.addAttribute("loginInfo", "Login or password is incorrect");
 
-        return "userLogin";
+        return "user/userLogin";
     }
 
     @GetMapping("/user/register")
     public String showRegistrationForm(Model model){
         model.addAttribute("registerForm", new RegisterForm());
 
-        return "userRegistration";
+        return "user/userRegistration";
     }
 
     @PostMapping("/user/register")
@@ -53,17 +53,17 @@ public class UserController {
         if(bindingResult.hasErrors()){
             model.addAttribute("registerInfo", "Wrong form of Zip code, the correct form is 44335");
 
-            return "userRegistration";
+            return "user/userRegistration";
         }
         if(userService.isSuchLogin(registerForm.getLogin())){
             model.addAttribute("registerInfo", "This login is already taken");
 
-            return "userRegistration";
+            return "user/userRegistration";
         }
         if(!userService.isRepeatedPasswordCorrect(registerForm)){
             model.addAttribute("registerInfo", "Repeated password is incorrect");
 
-            return "userRegistration";
+            return "user/userRegistration";
         }
         UserForm newUser = new UserForm(registerForm.getLogin(), registerForm.getPassword());
 
