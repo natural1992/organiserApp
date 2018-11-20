@@ -55,7 +55,7 @@ public class UserController {
     @PostMapping("/user/register")
     public String getRegistrationForm(Model model, @ModelAttribute @Valid RegisterForm registerForm, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            model.addAttribute("registerInfo", "Some of the data is incorrect");
+            model.addAttribute("registerInfo", "Wrong form of Zip code, the correct form is 44335");
 
             return "userRegistration";
         }

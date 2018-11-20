@@ -148,7 +148,7 @@ body{
 .login button[type=button] {
 width: 150px;
 	height: 35px;
-	background: #fff;
+	background: transparent;
 	border: 1px solid #fff;
 	cursor: pointer;
 	border-radius: 2px;
@@ -201,13 +201,18 @@ width: 150px;
     <div class="header">
         <div>Welcome <span th:text="${login}"></span></div>
     </div>
+    <div class="header" style="top: 40%; left: 18%">
+        <div th:text="${weather + '°C'}"></div><br/>
+        <div style="font-size: 20px;" th:text="${'cloud level: ' + clouds + '%'}"></div><br/>
+        <div style="font-size: 20px;" th:text="${date}"></div>
+    </div>
     <div class="login">
             <button onclick="location.href='/newnote'" type="button">Create new note</button>
     </div>
     <div class="noteOne">
         <ul>
             <li th:each="note : ${notes}">
-                <strong th:text="${note.getPriority() + '   ' + note.getTitle()}"></strong><br/>
+                <strong th:text="${note.getTitle()}"></strong><br/>
                 <span th:text="${note.getText()}" ></span>
             </li>
         </ul>
